@@ -296,7 +296,7 @@ class ForkUHouseCard extends HTMLElement {
       const roomsData = this._config.rooms.map(r => {
         const s = this._hass.states[r.entity];
         const v = s ? parseFloat(s.state) : null;
-        return { ...r, value: v, valid: !isNaN(v) };
+        return { ...r, value: v, valid: v !== null && !isNaN(v) };
       });
       
       const weighted = roomsData.filter(r => r.valid && (r.weight === undefined || r.weight > 0)).map(r => r.value).sort((a,b)=>a-b);
@@ -325,13 +325,13 @@ class ForkUHouseCard extends HTMLElement {
       container.innerHTML = rooms.map(room => {
         if (!room.valid) return '';
         const top = room.y ?? 50; const left = room.x ?? 50;
-        const colorClass = this._getTempColorClass(room.value);
+        const colorClass = room.unit !== undefined ? '' : this._getTempColorClass(room.value);
         return `
           <div class="badge ${colorClass}" style="top: ${top}%; left: ${left}%;">
             <div class="badge-dot"></div>
             <div class="badge-content">
               <span class="badge-name">${room.name}</span>
-              <span class="badge-val">${room.value.toFixed(1)}°</span>
+              <span class="badge-val">${room.unit !== undefined ? room.value.toFixed(room.decimals ?? 0) + room.unit : room.value.toFixed(1) + "°"}</span>
             </div>
           </div>`;
       }).join('');
