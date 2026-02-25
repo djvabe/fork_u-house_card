@@ -86,7 +86,7 @@ const TRANSLATIONS = {
         advice_nice: "😎 Pogoda jest stabilna, temperatura przyjemna <span class='value-pill'><b>{val}</b> °C</span>. To <span class='value-pill'>idealny</span> moment na spacer lub przewietrzenie mieszkania.",
         
         advice_gaming: "<span class='value-pill pill-1'>🎮 <b>TRYB IMERSYJNY</b></span>  Tryb kina lub gry aktywny. Sterowanie <span class='value-pill'><b>AmbiLight</b></span> włączone.",
-    },
+    }
     hu: {
         loading: "Környezeti adatok elemzése...",
         home_median: "Otthon",
@@ -175,12 +175,6 @@ class ForkUHouseCard extends HTMLElement {
       };
     }
   
-    getCardSize() { return 18; }
-
-    getLayoutOptions() {
-      return { grid_rows: 18, grid_columns: 4, grid_min_rows: 4 };
-    }
-
     setConfig(config) {
       if (!config.rooms || !Array.isArray(config.rooms)) throw new Error("Missing 'rooms' list.");
       this._config = config;
@@ -296,7 +290,7 @@ class ForkUHouseCard extends HTMLElement {
       const roomsData = this._config.rooms.map(r => {
         const s = this._hass.states[r.entity];
         const v = s ? parseFloat(s.state) : null;
-        return { ...r, value: v, valid: v !== null && !isNaN(v) };
+        return { ...r, value: v, valid: !isNaN(v) };
       });
       
       const weighted = roomsData.filter(r => r.valid && (r.weight === undefined || r.weight > 0)).map(r => r.value).sort((a,b)=>a-b);
@@ -325,13 +319,13 @@ class ForkUHouseCard extends HTMLElement {
       container.innerHTML = rooms.map(room => {
         if (!room.valid) return '';
         const top = room.y ?? 50; const left = room.x ?? 50;
-        const colorClass = room.unit !== undefined ? '' : this._getTempColorClass(room.value);
+        const colorClass = this._getTempColorClass(room.value);
         return `
           <div class="badge ${colorClass}" style="top: ${top}%; left: ${left}%;">
             <div class="badge-dot"></div>
             <div class="badge-content">
               <span class="badge-name">${room.name}</span>
-              <span class="badge-val">${room.unit !== undefined ? room.value.toFixed(room.decimals ?? 0) + room.unit : room.value.toFixed(1) + "°"}</span>
+              <span class="badge-val">${room.value.toFixed(1)}°</span>
             </div>
           </div>`;
       }).join('');
@@ -504,9 +498,9 @@ class ForkUHouseCard extends HTMLElement {
     _render() {
       this.shadowRoot.innerHTML = `
         <style>
-          :host { display: block; height: 100%; --fork-u-bg: #1e2024; --color-cold: #60A5FA; --color-opt: #34D399; --color-warm: #FBBF24; --color-hot: #F87171; }
+          :host { display: block; --fork-u-bg: #1e2024; --color-cold: #60A5FA; --color-opt: #34D399; --color-warm: #FBBF24; --color-hot: #F87171; }
           .card {
-              position: relative; display: flex; flex-direction: column; width: 100%; height: 100%;
+              position: relative; display: flex; flex-direction: column; width: 100%; height: 350px;
               overflow: hidden;
               text-shadow: rgba(0,0,0,0.4) 0 1px 0px;
               box-shadow: 0 4px 2px rgba(0,0,0,0.3);
