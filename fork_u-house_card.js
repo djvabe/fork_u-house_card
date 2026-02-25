@@ -154,22 +154,22 @@ class ForkUHouseCard extends HTMLElement {
   
     static getStubConfig() {
       return {
-        language: "pl",
+        language: "hu",
         image: "/local/community/fork_u-house_card/images/",
         
         // Entities
-        weather_entity: "weather.forecast_home",
+        weather_entity: "weather.otthon",
         season_entity: "sensor.season",
         sun_entity: "sun.sun",
-        cloud_coverage_entity: "sensor.openweathermap_cloud_coverage",
+        cloud_coverage_entity: "sensor.otthon_felhoboritottsag",
         party_mode_entity: "input_boolean.gaming_mode",  // enables gaming ambient
         
         // AI Sensors
-        aqi_entity: "sensor.waqi_pm2_5", 
+        aqi_entity: "sensor.ajka_ajka_hungary_szallo_por_25_mm", 
         pollen_entity: "sensor.pollen_level", // Returns: 'High', 'Moderate', or number
-        uv_entity: "sensor.uv_index",
-        wind_speed_entity: "sensor.wind_speed",
-        wind_direction_entity: "sensor.wind_bearing",
+        uv_entity: "sensor.otthon_uv_index",
+        wind_speed_entity: "sensor.otthon_szelsebesseg",
+        wind_direction_entity: "sensor.otthon_szelirany",
 
         rooms: [{ name: "Salon", entity: "sensor.salon_temp", x: 50, y: 50, weight: 1 }]
       };
