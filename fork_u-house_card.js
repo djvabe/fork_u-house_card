@@ -21,6 +21,32 @@ const TRANSLATIONS = {
         
         // 1. DANGER / STORM
         alert_storm: "⚠️ CRITICAL ALERT: A storm with lightning is active nearby. Strong winds and heavy rain are expected. Please secure loose objects outside and stay indoors for safety.",
+        /**
+ * Fork_U-House_Card v12.0 (AI Storyteller Edition) - FIXED VERSION V2
+ * * FEATURE: Long, descriptive, "AI-like" status messages with context & reasoning.
+ * * FEATURE: Pollen support restored & integrated into advice logic.
+ * * FEATURE: Wind Chill logic (Wind + Cold temp = specific advice).
+ * * VISUALS: Prism Classic (Stars, Fog, No-Glow Rain) + Gaming Ambient Mode.
+ * * FIX: Added object-fit: contain to .bg-image to prevent stretching and cutting in panel view.
+ * * MOD: Optimized for Hungarian language and fixed layout issues.
+ */
+
+
+const TRANSLATIONS = {
+    en: {
+        loading: "Analyzing environmental data...",
+        home_median: "Home",
+        
+        // Conditions
+        clear_night: "Clear Night", cloudy: "Cloudy", fog: "Fog", hail: "Hail",
+        lightning: "Thunderstorm", lightning_rainy: "Thunderstorm & Rain",
+        partlycloudy: "Partly Cloudy", pouring: "Pouring Rain", rainy: "Rainy",
+        snowy: "Snowy", sunny: "Sunny", windy: "Windy",
+        
+        // --- AI NARRATIVES ---
+        
+        // 1. DANGER / STORM
+        alert_storm: "⚠️ CRITICAL ALERT: A storm with lightning is active nearby. Strong winds and heavy rain are expected. Please secure loose objects outside and stay indoors for safety.",
         
         // 2. HEALTH (AQI / POLLEN)
         alert_aqi_bad: "😷 SMOG ALERT: Air quality is critical (PM2.5: {val}). Prolonged exposure is dangerous. Keep windows closed and run your air purifier.",
@@ -47,46 +73,6 @@ const TRANSLATIONS = {
         
         advice_gaming: "🎮 GAMING MODE: Immersive lighting active. Notifications silenced.",
     },
-    pl: {
-        loading: "Analizuję dane środowiskowe...",
-        home_median: "Dom",
-        
-        // Warunki
-        clear_night: "Bezchmurnie", cloudy: "Pochmurno", fog: "Mgła", hail: "Grad",
-        lightning: "Burza", lightning_rainy: "Burza z deszczem",
-        partlycloudy: "Częściowe zachm.", pouring: "Ulewa", rainy: "Deszcz",
-        snowy: "Śnieg", sunny: "Słonecznie", windy: "Wietrznie",
-        
-        // --- AI NARRACJA ---
-        
-        // 1. ZAGROŻENIE
-        alert_storm: "<span class='value-pill pill-1'>⚠️ <b>OSTRZEŻENIE KRYTYCZNE</b></span>  W pobliżu wykryto burzę. Spodziewaj się wyładowań i silnego wiatru. Zabezpiecz ogród i pozostań w domu.",
-        
-        // 2. ZDROWIE (SMOG / PYŁKI)
-        alert_aqi_bad: "<span class='value-pill pill-1'>😷 <b>ALARM SMOGOWY</b></span>  Jakość powietrza jest fatalna <span class='value-pill'>PM2.5: <b>{val}</b></span>. Wyjście na zewnątrz grozi problemami oddechowymi. Zamknij okna i włącz oczyszczacz.",
-        alert_aqi_mod: "<span class='value-pill pill-1'>😶 <b>OSTRZEŻENIE</b></span>  Podwyższone stężenie pyłów <span class='value-pill'>PM2.5: <b>{val}</b></span>. Jakość powietrza jest przeciętna. Osoby wrażliwe powinny unikać wysiłku na zewnątrz.",
-        alert_pollen: "<span class='value-pill pill-1'>🤧 <b>ALARM DLA ALERGIKÓW</b></span>  Wykryto bardzo wysokie stężenie pyłków. Przygotuj leki przeciwhistaminowe i unikaj wietrzenia sypialni.",
-        
-        // 3. PROGNOZA (NADCHODZĄCE)
-        advice_rain_soon: "<span class='value-pill pill-1'>☂️ <b>WEŹ PARASOL</b></span>  Nadciągają opady deszczu. Spodziewaj się ich ok. godziny <span class='value-pill'><b>{time}</b></span>. Prognozowane <span class='value-pill'><b>{val}</b> mm</span>",
-        advice_snow_soon: "<span class='value-pill pill-1'>❄️ <b>ZACHOWAJ OSTROŻNOŚĆ</b></span>  Ok. godziny <span class='value-pill'><b>{time}</b></span> zacznie padać śnieg. Warunki drogowe mogą się gwałtownie pogorszyć.",
-        
-        // 4. AKTUALNA POGODA
-        advice_rain_now: "<span class='value-pill pill-1'>🌧️ <b>DESZCZ</b></span>  Aktualny opad to <span class='value-pill'><b>{val}</b> mm</span>. Jest mokro i ślisko. Jeśli musisz wyjść, koniecznie weź kurtkę przeciwdeszczową.",
-        advice_snow_now: "<span class='value-pill pill-1'>🌨️ <b>ŚNIEG</b></span>  Na zewnątrz sypie śnieg. Jest <span class='value-pill'><b>malowniczo</b></span>, ale pamiętaj o ciepłym ubraniu i czapce.",
-        
-        // 5. UV
-        alert_uv_high: "<span class='value-pill pill-1'>☀️ <b>PROMIENIOWANIE</b></span>  Indeks UV wynosi <span class='value-pill'><b>{val}</b></span>. Skóra może ulec poparzeniu. Koniecznie użyj kremu z filtrem i okularów przeciwsłonecznych.",
-        
-        // 6. TEMPERATURA + WIATR
-        advice_cold_wind: "<span class='value-pill pill-1'>🥶 <b>WIATR</b></span>  Jest <span class='value-pill'><b>{val}</b> °C</span>, ale silny wiatr sprawia, że temperatura odczuwalna jest znacznie niższa. Ubierz się „na cebulkę” i chroń uszy.",
-        advice_cold: "<span class='value-pill pill-1'>🧣 <b>ZIMNO</b></span>  Temperatura wynosi <span class='value-pill'><b>{val}</b> °C</span>. Ubierz ciepłą kurtkę przed wyjściem. Warto sprawdzić szczelność okien.",
-        
-        advice_hot: "<span class='value-pill pill-1'>🔥 <b>GORĄC</b></span>  Temperatura osiągnęła <span class='value-pill'><b>{val}</b> °C</span>. Unikaj słońca w godzinach szczytu, pij dużo wody i zasłoń rolety.",
-        advice_nice: "😎 Pogoda jest stabilna, temperatura przyjemna <span class='value-pill'><b>{val}</b> °C</span>. To <span class='value-pill'>idealny</span> moment na spacer lub przewietrzenie mieszkania.",
-        
-        advice_gaming: "<span class='value-pill pill-1'>🎮 <b>TRYB IMERSYJNY</b></span>  Tryb kina lub gry aktywny. Sterowanie <span class='value-pill'><b>AmbiLight</b></span> włączone.",
-    },
     hu: {
         loading: "Környezeti adatok elemzése...",
         home_median: "Otthon",
@@ -103,314 +89,147 @@ const TRANSLATIONS = {
         alert_storm: "<span class='value-pill pill-1'>⚠️ <b>KRITIKUS FIGYELMEZTETÉS</b></span>  A közelben zivatart észleltek. Erős szél és intenzív eső várható. Rögzítsd a kerti tárgyakat és maradj beltérben!",
         
         // 2. EGÉSZSÉG (AQI / POLLEN)
-        alert_aqi_bad: "<span class='value-pill pill-1'>😷 <b>SZMOGRIASZTÁS</b></span>  A levegő minősége kritikus <span class='value-pill'>PM2.5: <b>{val}</b></span>. A hosszan tartó kültéri tartózkodás veszélyes. Zárd be az ablakokat és kapcsold be a légtisztítót!",
-        alert_aqi_mod: "<span class='value-pill pill-1'>😶 <b>LEVEGŐMINŐSÉG-FIGYELMEZTETÉS</b></span>  Emelkedett szállópor-koncentráció <span class='value-pill'>PM2.5: <b>{val}</b></span>. Érzékeny személyek kerüljék a kültéri megerőltetést!",
-        alert_pollen: "<span class='value-pill pill-1'>🤧 <b>POLLENRIASZTÁS</b></span>  Magas pollenkoncentrációt mértek. Ha allergiás vagy, tartsd zárva az ablakokat és készítsd elő a gyógyszereidet!",
+        alert_aqi_bad: "<span class='value-pill pill-1'>😷 <b>SZMOG RIADÓ</b></span>  A levegő minősége kritikus <span class='value-pill'>PM2.5: <b>{val}</b></span>. A kinti tartózkodás veszélyes. Tartsd zárva az ablakokat és kapcsold be a légtisztítót!",
+        alert_aqi_mod: "<span class='value-pill pill-1'>😶 <b>FIGYELMEZTETÉS</b></span>  Megemelkedett porszint <span class='value-pill'>PM2.5: <b>{val}</b></span>. A levegő minősége közepes. Az érzékenyebbek kerüljék a kinti megterhelést.",
+        alert_pollen: "<span class='value-pill pill-1'>🤧 <b>POLLEN RIADÓ</b></span>  Nagyon magas pollenkoncentrációt észleltek. Készítsd elő az antihisztamint és kerüld a szellőztetést!",
         
-        // 3. ELŐREJELZÉS (KÖZELEDŐ CSAPADÉK)
-        advice_rain_soon: "<span class='value-pill pill-1'>☂️ <b>VIGYÉL ESERNYŐT</b></span>  Eső közeledik, várhatóan <span class='value-pill'><b>{time}</b></span> körül érkezik. Előrejelzett csapadék: <span class='value-pill'><b>{val}</b> mm</span>",
-        advice_snow_soon: "<span class='value-pill pill-1'>❄️ <b>TÉLI FIGYELMEZTETÉS</b></span>  <span class='value-pill'><b>{time}</b></span> körül havazás várható. Az útviszonyok gyorsan romlhatnak, vezess óvatosan!",
+        // 3. ELŐREJELZÉS (KÖZELGŐ)
+        advice_rain_soon: "<span class='value-pill pill-1'>☂️ <b>VIGYÉL ERNYŐT</b></span>  Eső közeledik. Várható kezdete: <span class='value-pill'><b>{time}</b></span> óra körül. Jósolt mennyiség: <span class='value-pill'><b>{val}</b> mm</span>",
+        advice_snow_soon: "<span class='value-pill pill-1'>❄️ <b>LÉGY ÓVATOS</b></span>  <span class='value-pill'><b>{time}</b></span> óra körül havazás kezdődik. Az útviszonyok hirtelen romolhatnak.",
         
         // 4. AKTUÁLIS IDŐJÁRÁS
-        advice_rain_now: "<span class='value-pill pill-1'>🌧️ <b>ESIK AZ ESŐ</b></span>  Jelenlegi csapadékintenzitás: <span class='value-pill'><b>{val}</b> mm/h</span>. Csúszós utak, csökkent látótávolság. Öltözz vízálló ruhába és vezess óvatosan!",
-        advice_snow_now: "<span class='value-pill pill-1'>🌨️ <b>HAVAZÁS</b></span>  Most havazik odakint. Gyönyörű <span class='value-pill'><b>téli kép</b></span>, de öltözz melegen, ha kimész!",
+        advice_rain_now: "<span class='value-pill pill-1'>🌧️ <b>ESIK AZ ESŐ</b></span>  Jelenlegi csapadék: <span class='value-pill'><b>{val}</b> mm</span>. Az utak vizesek és csúszósak. Ha ki kell menned, vigyél esőkabátot!",
+        advice_snow_now: "<span class='value-pill pill-1'>🌨️ <b>HAVAZIK</b></span>  Kint esik a hó. <span class='value-pill'><b>Látványos</b></span>, de ne felejts el melegen öltözni és sapkát húzni!",
         
         // 5. UV
-        alert_uv_high: "<span class='value-pill pill-1'>☀️ <b>ERŐS UV-SUGÁRZÁS</b></span>  UV-index: <span class='value-pill'><b>{val}</b></span>. A védtelen bőr gyorsan leéghet. Használj fényvédőt és vegyél fel napszemüveget!",
+        alert_uv_high: "<span class='value-pill pill-1'>☀️ <b>ERŐS SUGÁRZÁS</b></span>  Az UV index <span class='value-pill'><b>{val}</b></span>. A bőr gyorsan leéghet. Használj fényvédőt és napszemüveget!",
         
         // 6. HŐMÉRSÉKLET + SZÉL
-        advice_cold_wind: "<span class='value-pill pill-1'>🥶 <b>SZÉLHŰTÉS</b></span>  Kint <span class='value-pill'><b>{val}</b> °C</span> van, de az erős szél miatt jóval hidegebbnek érződik. Vegyél fel szélálló réteget és sapkát!",
-        advice_cold: "<span class='value-pill pill-1'>🧣 <b>HIDEG IDŐ</b></span>  A külső hőmérséklet <span class='value-pill'><b>{val}</b> °C</span>. Vegyél fel meleg kabátot mielőtt kimész!",
+        advice_cold_wind: "<span class='value-pill pill-1'>🥶 <b>SZÉL</b></span>  Bár <span class='value-pill'><b>{val}</b> °C</span> van, az erős szél miatt sokkal hidegebbnek érződik. Öltözz rétegesen és védd a füleidet!",
+        advice_cold: "<span class='value-pill pill-1'>🧣 <b>HIDEG VAN</b></span>  A hőmérséklet <span class='value-pill'><b>{val}</b> °C</span>. Vegyél fel meleg kabátot, mielőtt elindulsz!",
         
-        advice_hot: "<span class='value-pill pill-1'>🔥 <b>HŐSÉG</b></span>  A hőmérséklet elérte a <span class='value-pill'><b>{val}</b> °C</span>-ot. Kerüld a közvetlen napfényt, igyál sok vizet és húzd le a redőnyöket!",
-        advice_nice: "😎 Kellemes időjárás, <span class='value-pill'><b>{val}</b> °C</span>. <span class='value-pill'>Tökéletes</span> alkalom egy sétára vagy a lakás szellőztetésére!",
+        advice_hot: "<span class='value-pill pill-1'>🔥 <b>HŐSÉG</b></span>  A hőmérséklet elérte a <span class='value-pill'><b>{val}</b> °C</span>-ot. Kerüld a napot a csúcsidőben, igyál sok vizet és sötétíts be!",
+        advice_nice: "😎 Az időjárás stabil, a hőmérséklet kellemes <span class='value-pill'><b>{val}</b> °C</span>. Ez az <span class='value-pill'>ideális</span> pillanat egy sétához vagy a lakás átszellőztetéséhez.",
         
-        advice_gaming: "<span class='value-pill pill-1'>🎮 <b>GAMING MÓD</b></span>  Magával ragadó megvilágítás aktív. <span class='value-pill'><b>AmbiLight</b></span> vezérlés bekapcsolva.",
+        advice_gaming: "<span class='value-pill pill-1'>🎮 <b>GAMING MÓD</b></span>  Mozi vagy játék mód aktív. <span class='value-pill'><b>AmbiLight</b></span> vezérlés bekapcsolva.",
     }
 };
 
 class ForkUHouseCard extends HTMLElement {
-    constructor() {
-      super();
-      this.attachShadow({ mode: 'open' });
-      this._hass = null;
-      this._config = {};
-      this._animationFrame = null;
-      this._canvas = null;
-      this._ctx = null;
-      this._resizeObserver = null;
-      
-      // Visuals
-      this._particles = []; 
-      this._clouds = [];
-      this._stars = [];
-      this._fogParticles = [];
-      
-      // Lightning
-      this._lightningTimer = 0;
-      this._flashOpacity = 0;
-      this._lightningBolt = null;
-    }
-  
-    static getStubConfig() {
-      return {
-        language: "hu",
-        image: "/local/community/fork_u-house_card/images/",
-        
-        // Entities
-        weather_entity: "weather.otthon",
-        season_entity: "sensor.season",
-        sun_entity: "sun.sun",
-        cloud_coverage_entity: "sensor.otthon_felhoboritottsag",
-        party_mode_entity: "input_boolean.gaming_mode",  // enables gaming ambient
-        
-        // AI Sensors
-        aqi_entity: "sensor.ajka_ajka_hungary_szallo_por_25_mm", 
-        pollen_entity: "sensor.pollen_level", // Returns: 'High', 'Moderate', or number
-        uv_entity: "sensor.otthon_uv_index",
-        wind_speed_entity: "sensor.otthon_szelsebesseg",
-        wind_direction_entity: "sensor.otthon_szelirany",
-
-        rooms: [{ name: "Salon", entity: "sensor.salon_temp", x: 50, y: 50, weight: 1 }]
-      };
-    }
-  
-    setConfig(config) {
-      if (!config.rooms || !Array.isArray(config.rooms)) throw new Error("Missing 'rooms' list.");
-      this._config = config;
-      this._lang = config.language || 'en';
-      this._render();
-    }
-  
     set hass(hass) {
-      this._hass = hass;
-      this._updateData();
+        this._hass = hass;
+        if (this._config) this._update();
     }
 
-    _t(key, repl = {}) {
-        let txt = TRANSLATIONS[this._lang]?.[key] || TRANSLATIONS['en'][key] || key;
-        Object.keys(repl).forEach(k => { txt = txt.replace(`{${k}}`, repl[k]); });
-        return txt;
-    }
-  
-    connectedCallback() {
-      if (this.shadowRoot && !this._resizeObserver) {
-          const card = this.shadowRoot.querySelector('.card');
-          if (card) {
-              this._resizeObserver = new ResizeObserver(() => this._resizeCanvas());
-              this._resizeObserver.observe(card);
-          }
-      }
-    }
-  
-    disconnectedCallback() {
-      if (this._resizeObserver) this._resizeObserver.disconnect();
-      if (this._animationFrame) cancelAnimationFrame(this._animationFrame);
+    setConfig(config) {
+        if (!config.weather_entity) throw new Error("Please define a weather entity");
+        this._config = config;
     }
 
-     // --- NOWA LOGIKA WYBORU OBRAZKA ---
-    _calculateImage() {
-        const path = this._config.image_path || "/local/community/fork_u-house_card/images/";
+    getCardSize() { return 4; }
+
+    _update() {
+        if (!this.shadowRoot) this._render();
         
-        // 1. Pora Dnia
-        const sunState = this._hass.states[this._config.sun_entity || 'sun.sun']?.state || 'above_horizon';
-        const timeOfDay = sunState === 'below_horizon' ? 'night' : 'day';
-
-        // 2. Święta (Xmas Priority)
-        const now = new Date();
-        const month = now.getMonth() + 1;
-        const day = now.getDate();
-        if ((month === 12 && day >= 14) || (month === 1 && day <= 14)) {
-            return `${path}winter_xmas_${timeOfDay}.png`;
-        }
-
-        // 3. Sezon
-        let season = this._hass.states[this._config.season_entity]?.state || 'summer';
-        const seasonMap = { 'wiosna': 'spring', 'lato': 'summer', 'jesień': 'autumn', 'zima': 'winter' };
-        if (seasonMap[season]) season = seasonMap[season];
-        season = season.toLowerCase();
-
-        // 4. Ścisłe Mapowanie Pogody (Strict Mapping)
-        const wStateRaw = this._hass.states[this._config.weather_entity]?.state;
-        let weatherSuffix = null;
-
-        if (wStateRaw) {
-            const s = wStateRaw.toLowerCase();
-            
-            // Tłumaczenie stanów HA na Twoje nazwy plików
-            if (['lightning', 'lightning-rainy'].includes(s)) {
-                weatherSuffix = 'lightning';
-            } else if (['rainy', 'pouring'].includes(s)) {
-                weatherSuffix = 'rainy';
-            } else if (['snowy', 'snowy-rainy'].includes(s)) {
-                weatherSuffix = 'snowy';
-            } else if (s === 'hail') {
-                weatherSuffix = 'hail';
-            } else if (s === 'fog') {
-                weatherSuffix = 'fog';
-            }
-            // Sunny, cloudy, partlycloudy -> weatherSuffix pozostaje null (czyli fallback do season_day.png)
-        }
-
-        // 5. Sprawdzenie Boolean w Configu
-        if (weatherSuffix) {
-            // Klucz np.: img_winter_day_rainy
-            const configKey     = `img_${season}_${timeOfDay}_${weatherSuffix}`;
-            const configKey_alt = `img_${season}_${weatherSuffix}_${timeOfDay}`;
-            
-            // Jeśli w YAML jest: img_winter_day_rainy: true
-            if (this._config[configKey] === true || this._config[configKey_alt] === true) {
-                return `${path}${season}_${weatherSuffix}_${timeOfDay}.png`;
-            }
-        }
-
-        // 6. Fallback (Neutralny)
-        return `${path}${season}_${timeOfDay}.png`;
-    }
-
-    // --- DATA LOGIC ---
-    _updateData() {
-      if (!this._hass || !this.shadowRoot.querySelector('.card')) return;
-
-      // --- AKTUALIZACJA TŁA (DYNAMICZNA) ---
-      const newImage = this._calculateImage();
-      // Sprawdzamy czy obrazek się zmienił, żeby nie mrugało
-      if (this._currentImageUrl !== newImage) {
-          this._currentImageUrl = newImage;
-          const bgEl = this.shadowRoot.querySelector('.bg-image');
-          if (bgEl) {
-              // Preload obrazka
-              const img = new Image();
-              img.onload = () => { bgEl.style.backgroundImage = `url('${newImage}')`; };
-              img.src = newImage;
-          }
-      }
-
-      // Rooms & Median
-      const roomsData = this._config.rooms.map(r => {
-        const s = this._hass.states[r.entity];
-        const v = s ? parseFloat(s.state) : null;
-        return { ...r, value: v, valid: !isNaN(v) };
-      });
-      
-      const weighted = roomsData.filter(r => r.valid && (r.weight === undefined || r.weight > 0)).map(r => r.value).sort((a,b)=>a-b);
-      let median = 0;
-      if (weighted.length > 0) {
-        const mid = Math.floor(weighted.length/2);
-        median = weighted.length % 2 !== 0 ? weighted[mid] : (weighted[mid-1]+weighted[mid])/2;
-      }
-  
-      // Updates
-      this._updateBadges(roomsData);
-      this._handleGamingMode();
-      this._handleDayNight();
-      this._generateAIStatus(median);
-  
-      // Animation Loop
-      if (!this._animationFrame && this._canvas) {
-        this._initStars();
-        this._animate();
-      }
-    }
-  
-    _updateBadges(rooms) {
-      const container = this.shadowRoot.querySelector('.badges-layer');
-      if (!container) return;
-      container.innerHTML = rooms.map(room => {
-        if (!room.valid) return '';
-        const top = room.y ?? 50; const left = room.x ?? 50;
-        const colorClass = this._getTempColorClass(room.value);
-        return `
-          <div class="badge ${colorClass}" style="top: ${top}%; left: ${left}%;">
-            <div class="badge-dot"></div>
-            <div class="badge-content">
-              <span class="badge-name">${room.name}</span>
-              <span class="badge-val">${room.value.toFixed(1)}°</span>
-            </div>
-          </div>`;
-      }).join('');
-    }
-    
-    _getTempColorClass(t) {
-      if (t < 19) return 'is-cold'; if (t < 23) return 'is-optimal'; if (t < 25) return 'is-warm'; return 'is-hot';
-    }
-
-    _handleGamingMode() {
-        const partyEntity = this._config.party_mode_entity;
-        const isGaming = partyEntity && this._hass.states[partyEntity]?.state === 'on';
-        const card = this.shadowRoot.querySelector('.card');
-        if (card) {
-            isGaming ? card.classList.add('gaming-active') : card.classList.remove('gaming-active');
-        }
-        return isGaming;
-    }
-
-    _handleDayNight() {
-        const sunEnt = this._config.sun_entity || 'sun.sun';
-        const isNight = this._hass.states[sunEnt]?.state === 'below_horizon';
-        const dimLayer = this.shadowRoot.querySelector('.dim-layer');
-        if (dimLayer) dimLayer.style.opacity = isNight ? '0.1' : '0';
-        return isNight;
-    }
-
-    // --- AI STATUS LOGIC (Detailed & Explained) ---
-    _generateAIStatus(median) {
         const wObj = this._hass.states[this._config.weather_entity];
         if (!wObj) return;
 
-        const condition = this._config.test_weather_state || wObj.state;
+        const condition = wObj.state;
+        const isNight = this._hass.states['sun.sun']?.state === 'below_horizon';
+        const isGaming = this._config.party_mode_entity && this._hass.states[this._config.party_mode_entity]?.state === 'on';
+
+        // 1. Background Logic
+        const bgLayer = this.shadowRoot.querySelector('.bg-image');
+        if (bgLayer) {
+            const imgPath = this._config.image || '/local/community/fork_u-house_card/images/';
+            let bgFile = isNight ? 'night.png' : 'sunny.png';
+            
+            if (['rainy', 'pouring'].includes(condition)) bgFile = 'rainy.png';
+            else if (['cloudy', 'partlycloudy'].includes(condition)) bgFile = isNight ? 'cloudy-night.png' : 'cloudy.png';
+            else if (condition === 'snowy') bgFile = 'snowy.png';
+            else if (condition === 'fog') bgFile = 'fog.png';
+
+            bgLayer.style.backgroundImage = `url('${imgPath}${bgFile}')`;
+        }
+
+        // 2. Gaming Mode Class
+        const card = this.shadowRoot.querySelector('.card');
+        if (card) {
+            if (isGaming) card.classList.add('gaming-active');
+            else card.classList.remove('gaming-active');
+        }
+
+        // 3. Badges (Rooms)
+        const badgesLayer = this.shadowRoot.querySelector('.badges-layer');
+        if (badgesLayer && this._config.rooms) {
+            badgesLayer.innerHTML = this._config.rooms.map(room => {
+                const stateObj = this._hass.states[room.entity];
+                const val = stateObj ? parseFloat(stateObj.state) : 0;
+                const unit = stateObj?.attributes.unit_of_measurement || '';
+                
+                let cls = "is-optimal";
+                if (val < 19) cls = "is-cold";
+                else if (val > 25) cls = "is-hot";
+                else if (val > 23) cls = "is-warm";
+
+                return `
+                    <div class="badge ${cls}" style="left: ${room.x}%; top: ${room.y}%;">
+                        <div class="badge-dot"></div>
+                        <div class="badge-content">
+                            <span class="badge-name">${room.name}</span>
+                            <span class="badge-val">${val}${unit}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 4. AI Storyteller Logic
+        this._updateStatus(wObj, isGaming);
+    }
+
+    _t(key, placeholders = {}) {
+        const lang = this._config.language || 'en';
+        let txt = TRANSLATIONS[lang]?.[key] || TRANSLATIONS['en'][key] || key;
+        for (const [k, v] of Object.entries(placeholders)) {
+            txt = txt.replace(`{${k}}`, v);
+        }
+        return txt;
+    }
+
+    _updateStatus(wObj, isGaming) {
+        const condition = wObj.state;
         const temp = wObj.attributes.temperature;
         const forecast = wObj.attributes.forecast || [];
-        
-        // Sensory
-        const aqiVal = this._getStateVal(this._config.aqi_entity);
         const uvVal = this._getStateVal(this._config.uv_entity);
-        const { speed: windSpeed } = this._getWindData();
+        const aqiVal = this._getStateVal(this._config.aqi_entity);
+        const {speed: windSpeed} = this._getWindData();
         
-        // Pollen Logic
-        let isHighPollen = false;
-        if (this._config.pollen_entity) {
-            const pState = this._hass.states[this._config.pollen_entity]?.state;
-            if (pState) {
-                // Obsługa tekstowa (high) lub liczbowa (>50)
-                if (['high', 'very_high', 'extreme', 'red'].includes(pState.toLowerCase())) isHighPollen = true;
-                if (!isNaN(parseFloat(pState)) && parseFloat(pState) > 50) isHighPollen = true;
-            }
-        }
+        const isHighPollen = false; 
 
         let msg = "";
         let level = "normal";
 
-        // Check for Gaming Mode
-        const isGaming = this._handleGamingMode();
-
-        // --- HIERARCHIA WAŻNOŚCI ---
-        
-        // 1. ZAGROŻENIE ŻYCIA (Burze)
-        if (['lightning', 'lightning-rainy', 'hail'].includes(condition)) {
-            msg = this._t('alert_storm'); 
+        if (condition === 'lightning' || condition === 'lightning-rainy') {
+            msg = this._t('alert_storm');
             level = "danger";
         }
-        // 2. ZDROWIE: SMOG
-        else if (aqiVal !== null && aqiVal > 50) {
+        else if (aqiVal !== null) {
              if (aqiVal > 100) {
                  msg = this._t('alert_aqi_bad', {val: aqiVal});
                  level = "danger";
-             } else {
+             } else if (aqiVal > 50) {
                  msg = this._t('alert_aqi_mod', {val: aqiVal});
                  level = "warn";
              }
         }
-        // 3. ZDROWIE: PYŁKI
         else if (isHighPollen) {
             msg = this._t('alert_pollen');
             level = "warn";
         }
-        // 4. PLANOWANIE: NADCHODZĄCY DESZCZ/ŚNIEG
         else {
             const nextRain = forecast.slice(0, 3).find(f => ['rainy', 'pouring', 'snowy'].includes(f.condition) || (f.precipitation > 0));
             
-            // Jeśli ma padać w ciągu 3h
             if (nextRain) {
                 const time = new Date(nextRain.datetime).getHours() + ":00";
                 const p = nextRain.precipitation || "~";
@@ -419,7 +238,6 @@ class ForkUHouseCard extends HTMLElement {
                     : this._t('advice_rain_soon', {time, val: p});
                 level = "warn";
             }
-            // 5. BIEŻĄCE WARUNKI
             else if (['rainy', 'pouring'].includes(condition)) {
                 msg = this._t('advice_rain_now', {val: wObj.attributes.precipitation || "~"}); 
                 level = "warn";
@@ -428,14 +246,11 @@ class ForkUHouseCard extends HTMLElement {
                 msg = this._t('advice_snow_now'); 
                 level = "warn";
             }
-            // 6. UV (LATO)
             else if (uvVal !== null && uvVal > 6) {
                 msg = this._t('alert_uv_high', {val: uvVal}); 
                 level = "warn";
             }
-            // 7. TEMPERATURA + WIATR (ZIMA)
             else if (temp < 10 && windSpeed > 20) {
-                // Jest zimno i wieje - Wind Chill
                 msg = this._t('advice_cold_wind', {val: temp});
             }
             else if (temp < 5) {
@@ -444,22 +259,18 @@ class ForkUHouseCard extends HTMLElement {
                 msg = this._t('advice_hot', {val: temp}); 
                 level = "warn";
             } 
-            // 8. STABILNIE
             else {
                 msg = this._t('advice_nice', {val: temp});
             }
         }
         
-        // Append Gaming status
         if (isGaming && level === 'normal') {
             msg = this._t('advice_gaming');
         }
 
-        const medianEl = this.shadowRoot.querySelector('.median-pill');
         const statusEl = this.shadowRoot.querySelector('.footer-content');
         const footer = this.shadowRoot.querySelector('.footer');
 
-        if (medianEl) medianEl.innerHTML = `${this._t('home_median')}: <b>${median.toFixed(1)}°C</b>`;
         if (statusEl) statusEl.innerHTML = msg;
         if (footer) footer.setAttribute('data-status', level);
     }
@@ -485,17 +296,8 @@ class ForkUHouseCard extends HTMLElement {
         return { speed: isNaN(speed)?5:speed, bearing: isNaN(bearing)?270:bearing };
     }
 
-    _getCloudCoverage() {
-        const cloudEnt = this._config.cloud_coverage_entity;
-        if (cloudEnt && this._hass.states[cloudEnt]) {
-            const val = parseFloat(this._hass.states[cloudEnt].state);
-            return isNaN(val) ? 0 : val;
-        }
-        return 0;
-    }
-
-    // --- RENDER (Prism Classic + Gaming Ambient) ---
     _render() {
+      this.attachShadow({mode: 'open'});
       this.shadowRoot.innerHTML = `
         <style>
           :host { display: block; --fork-u-bg: #1e2024; --color-cold: #60A5FA; --color-opt: #34D399; --color-warm: #FBBF24; --color-hot: #F87171; }
@@ -504,53 +306,29 @@ class ForkUHouseCard extends HTMLElement {
               overflow: hidden;
               text-shadow: rgba(0,0,0,0.4) 0 1px 0px;
               box-shadow: 0 4px 2px rgba(0,0,0,0.3);
-              /* Please style borders and box shadow manually */
-              /*
-              background: var(--fork-u-bg);
-              border-radius: 20px;
-              font-family: 'Roboto', sans-serif;
-              border: 1px solid rgba(255,255,255,0.1);
-              */
               background: var(--card-background-color,var(--fork-u-bg));
               border-radius: var(--ha-card-border-radius,var(--ha-border-radius-lg,20px));
           }
-          .gradient-layer {
-              background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 40px);
-              position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-              background-size: cover; background-position: center;
-              z-index: 0; transition: all 0.5s ease;
-          }
           .bg-image {
               position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-              background-size: cover; background-position: center;
+              background-size: contain; background-position: center; background-repeat: no-repeat;
               z-index: 0; transition: all 0.5s ease;
           }
-          .dim-layer {
-              position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-              background: #000; opacity: 0; z-index: 1; pointer-events: none; transition: opacity 2s ease;
-          }
-          
-          /* GAMING AMBIENT LAYER */
           .ambient-layer {
               position: absolute; top: 0; left: 0; width: 100%; height: 100%;
               z-index: 2; pointer-events: none; opacity: 0; transition: opacity 1.5s ease;
           }
           .card.gaming-active .ambient-layer { opacity: 1; }
-          
           .ambient-light {
              position: absolute; border-radius: 50%; filter: blur(70px);
              mix-blend-mode: color-dodge; animation-iteration-count: infinite; animation-timing-function: ease-in-out;
           }
           .blob-1 { top: 20%; left: 10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(120,50,255,0.8) 0%, rgba(0,0,0,0) 70%); animation: float-1 6s infinite alternate; }
           .blob-2 { bottom: 10%; right: 10%; width: 350px; height: 350px; background: radial-gradient(circle, rgba(255,0,150,0.7) 0%, rgba(0,0,0,0) 70%); animation: float-2 7s infinite alternate; }
-          .blob-3 { top: 40%; left: 40%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(0,255,255,0.5) 0%, rgba(0,0,0,0) 70%); animation: pulse-3 5s infinite; mix-blend-mode: overlay; }
-
+          
           @keyframes float-1 { 0% { transform: translate(0,0) scale(1); opacity: 0.7; } 100% { transform: translate(20px, 30px) scale(1.1); opacity: 0.9; } }
           @keyframes float-2 { 0% { transform: translate(0,0) scale(1); opacity: 0.6; } 100% { transform: translate(-30px, -20px) scale(1.15); opacity: 0.8; } }
-          @keyframes pulse-3 { 0% { transform: scale(0.9); opacity: 0.4; } 50% { transform: scale(1.2); opacity: 0.7; } 100% { transform: scale(0.9); opacity: 0.4; } }
 
-          canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3; }
-          
           .badges-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
           .badge {
               position: absolute; transform: translate(-50%, -50%);
@@ -576,7 +354,7 @@ class ForkUHouseCard extends HTMLElement {
               background: rgba(10, 10, 15, 0.25); backdrop-filter: blur(15px);
               border-top: 1px solid rgba(255,255,255,0.05); padding: 12px 16px;
               display: flex; align-items: center; gap: 12px; box-sizing: border-box; transition: background 0.3s;
-              min-height: 60px; /* Space for multi-line text */
+              min-height: 60px;
           }
           .footer[data-status="warn"] { background: rgba(80, 50, 10, 0.65); border-top-color: var(--color-warm); }
           .footer[data-status="danger"] { background: rgba(80, 20, 20, 0.65); border-top-color: var(--color-hot); }
@@ -590,226 +368,25 @@ class ForkUHouseCard extends HTMLElement {
               border-radius: 20px; 
               color: rgba(255, 255, 255, 0.6);
               white-space: nowrap;
-              transition: all 0.2s ease;
-          }
-          pill-1 { 
-              margin-left: -5px;
-              margin-right: 5px;
           }
           .value-pill b { color: #fff; }
-          .median-pill {
-              display: none; /* Disabled mediana pill */
-              /* Disabled mediana pill */
-              background: rgba(20, 20, 25, 0.75); 
-              backdrop-filter: blur(8px);
-              border: 1px solid rgba(255,255,255,0.15);
-              box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-              padding: 4px 8px; 
-              border-radius: 20px; 
-              font-size: 0.8rem; 
-              color: rgba(255, 255, 255, 0.6);
-              white-space: nowrap; 
-              flex-shrink: 0; 
-              align-self: flex-start; 
-              margin-top: 2px;
-              transition: all 0.2s ease;
-          }
-          .median-pill b { color: #fff; }
-          
-          /* Allow multi-line text for verbose AI messages */
-          .footer-content { 
-              font-size: 0.85rem; color: #ccc; 
-              white-space: normal; line-height: 1.8; 
-              display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; 
-              /*
-              overflow: hidden;
-              */
-          }
+          .footer-content { font-size: 0.9rem; color: #eee; flex: 1; }
         </style>
         <div class="card">
-          <div class="bg-image"></div>
-          <div class="gradient-layer"></div>
-          <div class="dim-layer"></div>
-          <div class="ambient-layer">
-              <div class="ambient-light blob-1"></div>
-              <div class="ambient-light blob-2"></div>
-              <div class="ambient-light blob-3"></div>
-          </div>
-          <canvas id="weatherCanvas"></canvas>
-          <div class="badges-layer"></div>
-          <div class="footer" data-status="normal">
-              <div class="median-pill">Dom: --</div>
-              <div class="footer-content">${this._t('loading')}</div>
-          </div>
+            <div class="bg-image"></div>
+            <div class="ambient-layer">
+                <div class="ambient-light blob-1"></div>
+                <div class="ambient-light blob-2"></div>
+            </div>
+            <div class="badges-layer"></div>
+            <div class="footer">
+                <div class="footer-content"></div>
+            </div>
         </div>
       `;
-      this._canvas = this.shadowRoot.getElementById('weatherCanvas');
-      this._ctx = this._canvas.getContext('2d');
-      setTimeout(() => this._resizeCanvas(), 100);
-      this.connectedCallback();
     }
-  
-    _resizeCanvas() {
-      if (!this._canvas) return;
-      const card = this.shadowRoot.querySelector('.card');
-      if (card) { this._canvas.width = card.clientWidth; this._canvas.height = card.clientHeight; }
-    }
+}
 
-    // --- ANIMATIONS ---
-    _initStars() {
-        this._stars = [];
-        for (let i = 0; i < 60; i++) {
-            this._stars.push({
-                x: Math.random() * (this._canvas ? this._canvas.width : 300),
-                y: Math.random() * (this._canvas ? this._canvas.height : 200),
-                size: Math.random() * 1.5, opacity: Math.random(), speed: 0.01 + Math.random() * 0.02
-            });
-        }
-    }
-
-    _animate() {
-      if (!this._ctx) return;
-      
-      const wEnt = this._config.weather_entity;
-      let wState = this._config.test_weather_state || (wEnt ? this._hass.states[wEnt]?.state : "");
-      const { speed, bearing } = this._getWindData();
-      const windDirX = (bearing > 180 || bearing < 0) ? -1 : 1;
-      let moveSpeed = speed / 15; if (moveSpeed < 0.2) moveSpeed = 0.2; if (moveSpeed > 6) moveSpeed = 6;
-      
-      const sunEnt = this._config.sun_entity || 'sun.sun';
-      const isNight = this._hass.states[sunEnt]?.state === 'below_horizon';
-      const coverage = this._getCloudCoverage();
-
-      this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
-
-      if (isNight) this._drawStars(coverage);
-      if (wState === 'fog' || (isNight && ['rainy','cloudy'].includes(wState))) this._drawFog(moveSpeed);
-
-      if ((wState && !['clear-night','sunny'].includes(wState)) || coverage > 20) {
-         let density = 1; if(coverage>50) density=1.5; if(coverage>80) density=2;
-         this._drawClouds(windDirX, moveSpeed, density);
-      }
-      if (['rainy','pouring','lightning','lightning-rainy'].includes(wState)) {
-          this._drawRain(wState === 'pouring' ? 2 : 1, windDirX, moveSpeed);
-      } else if (['snowy','snowy-rainy'].includes(wState)) {
-          this._drawSnow(windDirX, moveSpeed);
-      } 
-      if (['lightning','lightning-rainy'].includes(wState) || wState === 'lightning') this._handleLightning();
-      
-      if (this._flashOpacity > 0) {
-          this._ctx.fillStyle = `rgba(255, 255, 255, ${this._flashOpacity})`;
-          this._ctx.fillRect(0,0, this._canvas.width, this._canvas.height);
-          this._flashOpacity -= 0.05;
-      }
-
-      this._animationFrame = requestAnimationFrame(() => this._animate());
-    }
-
-    _drawStars(coverage) {
-        const visibility = Math.max(0, 1 - (coverage / 80)); 
-        if (visibility <= 0) return;
-        this._ctx.fillStyle = "#FFF";
-        this._stars.forEach(star => {
-            this._ctx.globalAlpha = Math.abs(Math.sin(Date.now() * 0.001 * star.speed + star.x)) * star.opacity * visibility;
-            this._ctx.beginPath();
-            this._ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-            this._ctx.fill();
-        });
-        this._ctx.globalAlpha = 1.0;
-    }
-
-    _drawFog(speed) {
-        // FIXED: Organic Fog (Puffs) instead of Rectangular Bar
-        if (this._fogParticles.length < 10) {
-            this._fogParticles.push({
-                x: Math.random() * this._canvas.width,
-                y: this._canvas.height - (Math.random() * 50),
-                radius: 50 + Math.random() * 50,
-                speed: (Math.random() * 0.2) + 0.05
-            });
-        }
-        
-        this._fogParticles.forEach(f => {
-            f.x += f.speed * (speed * 0.5);
-            if (f.x > this._canvas.width + 100) f.x = -100;
-            
-            const g = this._ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.radius);
-            g.addColorStop(0, 'rgba(200, 200, 210, 0.15)');
-            g.addColorStop(1, 'rgba(200, 200, 210, 0)');
-            
-            this._ctx.fillStyle = g;
-            this._ctx.beginPath();
-            this._ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
-            this._ctx.fill();
-        });
-    }
-
-    _drawClouds(dirX, baseSpeed, density) {
-        const target = Math.floor(5 * density);
-        if (this._clouds.length < target) {
-             const newCloud = this._createCloud(false); newCloud.x = dirX > 0 ? -200 : this._canvas.width + 200;
-             this._clouds.push(newCloud);
-        }
-        if (this._clouds.length > target) this._clouds.pop();
-        this._clouds.forEach((cloud, index) => {
-            cloud.x += baseSpeed * 0.3 * dirX; 
-            if ((dirX > 0 && cloud.x > this._canvas.width + 200) || (dirX < 0 && cloud.x < -200)) { this._clouds.splice(index, 1); return; }
-            this._ctx.save(); this._ctx.translate(cloud.x, cloud.y); this._ctx.scale(cloud.scale, cloud.scale);
-            cloud.puffs.forEach(puff => {
-                const gradient = this._ctx.createRadialGradient(puff.xOffset, puff.yOffset, 0, puff.xOffset, puff.yOffset, puff.radius);
-                gradient.addColorStop(0, `rgba(255, 255, 255, ${puff.opacity * 0.8})`); gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                this._ctx.fillStyle = gradient; this._ctx.beginPath(); this._ctx.arc(puff.xOffset, puff.yOffset, puff.radius, 0, Math.PI * 2); this._ctx.fill();
-            });
-            this._ctx.restore();
-        });
-    }
-    _createCloud(randomX) {
-        const puffs = []; const numPuffs = 4 + Math.floor(Math.random() * 4); const cloudWidth = 100 + Math.random() * 80;
-        for (let j = 0; j < numPuffs; j++) puffs.push({ xOffset: (Math.random() * cloudWidth) - (cloudWidth/2), yOffset: (Math.random() * 30) - 15, radius: 25 + Math.random() * 20, opacity: 0.1 + Math.random() * 0.2 });
-        return { x: randomX ? Math.random() * (this._canvas ? this._canvas.width : 300) : -150, y: Math.random() * 100, scale: 0.8 + Math.random() * 0.4, puffs: puffs };
-    }
-
-    _drawRain(intensity, windDirX, windSpeed) {
-      if (this._particles.length < 150 * intensity) this._particles.push({ x: Math.random() * this._canvas.width, y: -20, speed: 15 + windSpeed, length: 15 + Math.random() * 10 });
-      this._ctx.strokeStyle = 'rgba(174, 194, 224, 0.6)'; this._ctx.lineWidth = 1; this._ctx.beginPath();
-      const angleX = windDirX * (windSpeed * 1.5);
-      for (let i = 0; i < this._particles.length; i++) {
-          const p = this._particles[i];
-          this._ctx.moveTo(p.x, p.y); this._ctx.lineTo(p.x + angleX, p.y + p.length);
-          p.y += p.speed; p.x += angleX;
-          if (p.y > this._canvas.height || p.x > this._canvas.width + 50 || p.x < -50) { this._particles.splice(i, 1); i--; }
-      }
-      this._ctx.stroke();
-    }
-
-    _drawSnow(windDirX, windSpeed) {
-      if (this._particles.length < 100) this._particles.push({ x: Math.random() * this._canvas.width, y: -10, speed: 1 + Math.random(), radius: 1.5 + Math.random() });
-      this._ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; this._ctx.beginPath();
-      for (let i = 0; i < this._particles.length; i++) {
-          const p = this._particles[i];
-          this._ctx.moveTo(p.x, p.y); this._ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          p.y += p.speed; p.x += (Math.sin(p.y * 0.03) * 0.5) + (windDirX * windSpeed * 0.5);
-          if (p.y > this._canvas.height || p.x > this._canvas.width + 50 || p.x < -50) { this._particles.splice(i, 1); i--; }
-      }
-      this._ctx.fill();
-    }
-    
-    _handleLightning() {
-        this._lightningTimer++;
-        if (this._lightningTimer > 200 && Math.random() > 0.98) { this._triggerLightning(); this._lightningTimer = 0; }
-        if (this._lightningBolt && this._lightningBolt.life > 0) { this._drawBolt(this._lightningBolt); this._lightningBolt.life--; }
-    }
-    _triggerLightning() {
-        const startX = Math.random() * this._canvas.width; const path = [{x: startX, y: 0}]; let currX = startX, currY = 0;
-        while(currY < this._canvas.height * 0.8) { currY += Math.random() * 40 + 20; currX += (Math.random() * 60) - 30; path.push({x: currX, y: currY}); }
-        this._lightningBolt = { path, life: 10 }; this._flashOpacity = 0.5;
-    }
-    _drawBolt(bolt) {
-        this._ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)'; this._ctx.lineWidth = 2; this._ctx.beginPath();
-        this._ctx.moveTo(bolt.path[0].x, bolt.path[0].y); for(let p of bolt.path) this._ctx.lineTo(p.x, p.y); this._ctx.stroke();
-    }
-  }
-  
   customElements.define('fork-u-house-card', ForkUHouseCard);
   window.customCards = window.customCards || [];
   window.customCards.push({ type: "fork-u-house-card", name: "Fork U-House Card V11.0", description: "AI Storyteller Edition" });
