@@ -86,6 +86,46 @@ const TRANSLATIONS = {
         advice_nice: "😎 Pogoda jest stabilna, temperatura przyjemna <span class='value-pill'><b>{val}</b> °C</span>. To <span class='value-pill'>idealny</span> moment na spacer lub przewietrzenie mieszkania.",
         
         advice_gaming: "<span class='value-pill pill-1'>🎮 <b>TRYB IMERSYJNY</b></span>  Tryb kina lub gry aktywny. Sterowanie <span class='value-pill'><b>AmbiLight</b></span> włączone.",
+    },
+    hu: {
+        loading: "Környezeti adatok elemzése...",
+        home_median: "Otthon",
+        
+        // Időjárás állapotok
+        clear_night: "Tiszta éjszaka", cloudy: "Felhős", fog: "Köd", hail: "Jégeső",
+        lightning: "Zivatar", lightning_rainy: "Zivatoros eső",
+        partlycloudy: "Részben felhős", pouring: "Szakadó eső", rainy: "Esős",
+        snowy: "Havas", sunny: "Napos", windy: "Szeles",
+        
+        // --- AI ÉRTESÍTÉSEK ---
+        
+        // 1. VESZÉLY / VIHAR
+        alert_storm: "<span class='value-pill pill-1'>⚠️ <b>KRITIKUS FIGYELMEZTETÉS</b></span>  A közelben zivatart észleltek. Erős szél és intenzív eső várható. Rögzítsd a kerti tárgyakat és maradj beltérben!",
+        
+        // 2. EGÉSZSÉG (AQI / POLLEN)
+        alert_aqi_bad: "<span class='value-pill pill-1'>😷 <b>SZMOGRIASZTÁS</b></span>  A levegő minősége kritikus <span class='value-pill'>PM2.5: <b>{val}</b></span>. A hosszan tartó kültéri tartózkodás veszélyes. Zárd be az ablakokat és kapcsold be a légtisztítót!",
+        alert_aqi_mod: "<span class='value-pill pill-1'>😶 <b>LEVEGŐMINŐSÉG-FIGYELMEZTETÉS</b></span>  Emelkedett szállópor-koncentráció <span class='value-pill'>PM2.5: <b>{val}</b></span>. Érzékeny személyek kerüljék a kültéri megerőltetést!",
+        alert_pollen: "<span class='value-pill pill-1'>🤧 <b>POLLENRIASZTÁS</b></span>  Magas pollenkoncentrációt mértek. Ha allergiás vagy, tartsd zárva az ablakokat és készítsd elő a gyógyszereidet!",
+        
+        // 3. ELŐREJELZÉS (KÖZELEDŐ CSAPADÉK)
+        advice_rain_soon: "<span class='value-pill pill-1'>☂️ <b>VIGYÉL ESERNYŐT</b></span>  Eső közeledik, várhatóan <span class='value-pill'><b>{time}</b></span> körül érkezik. Előrejelzett csapadék: <span class='value-pill'><b>{val}</b> mm</span>",
+        advice_snow_soon: "<span class='value-pill pill-1'>❄️ <b>TÉLI FIGYELMEZTETÉS</b></span>  <span class='value-pill'><b>{time}</b></span> körül havazás várható. Az útviszonyok gyorsan romlhatnak, vezess óvatosan!",
+        
+        // 4. AKTUÁLIS IDŐJÁRÁS
+        advice_rain_now: "<span class='value-pill pill-1'>🌧️ <b>ESIK AZ ESŐ</b></span>  Jelenlegi csapadékintenzitás: <span class='value-pill'><b>{val}</b> mm/h</span>. Csúszós utak, csökkent látótávolság. Öltözz vízálló ruhába és vezess óvatosan!",
+        advice_snow_now: "<span class='value-pill pill-1'>🌨️ <b>HAVAZÁS</b></span>  Most havazik odakint. Gyönyörű <span class='value-pill'><b>téli kép</b></span>, de öltözz melegen, ha kimész!",
+        
+        // 5. UV
+        alert_uv_high: "<span class='value-pill pill-1'>☀️ <b>ERŐS UV-SUGÁRZÁS</b></span>  UV-index: <span class='value-pill'><b>{val}</b></span>. A védtelen bőr gyorsan leéghet. Használj fényvédőt és vegyél fel napszemüveget!",
+        
+        // 6. HŐMÉRSÉKLET + SZÉL
+        advice_cold_wind: "<span class='value-pill pill-1'>🥶 <b>SZÉLHŰTÉS</b></span>  Kint <span class='value-pill'><b>{val}</b> °C</span> van, de az erős szél miatt jóval hidegebbnek érződik. Vegyél fel szélálló réteget és sapkát!",
+        advice_cold: "<span class='value-pill pill-1'>🧣 <b>HIDEG IDŐ</b></span>  A külső hőmérséklet <span class='value-pill'><b>{val}</b> °C</span>. Vegyél fel meleg kabátot mielőtt kimész!",
+        
+        advice_hot: "<span class='value-pill pill-1'>🔥 <b>HŐSÉG</b></span>  A hőmérséklet elérte a <span class='value-pill'><b>{val}</b> °C</span>-ot. Kerüld a közvetlen napfényt, igyál sok vizet és húzd le a redőnyöket!",
+        advice_nice: "😎 Kellemes időjárás, <span class='value-pill'><b>{val}</b> °C</span>. <span class='value-pill'>Tökéletes</span> alkalom egy sétára vagy a lakás szellőztetésére!",
+        
+        advice_gaming: "<span class='value-pill pill-1'>🎮 <b>GAMING MÓD</b></span>  Magával ragadó megvilágítás aktív. <span class='value-pill'><b>AmbiLight</b></span> vezérlés bekapcsolva.",
     }
 };
 
@@ -135,6 +175,12 @@ class ForkUHouseCard extends HTMLElement {
       };
     }
   
+    getCardSize() { return 18; }
+
+    getLayoutOptions() {
+      return { grid_rows: 18, grid_columns: 4, grid_min_rows: 4 };
+    }
+
     setConfig(config) {
       if (!config.rooms || !Array.isArray(config.rooms)) throw new Error("Missing 'rooms' list.");
       this._config = config;
@@ -458,9 +504,9 @@ class ForkUHouseCard extends HTMLElement {
     _render() {
       this.shadowRoot.innerHTML = `
         <style>
-          :host { display: block; --fork-u-bg: #1e2024; --color-cold: #60A5FA; --color-opt: #34D399; --color-warm: #FBBF24; --color-hot: #F87171; }
+          :host { display: block; height: 100%; --fork-u-bg: #1e2024; --color-cold: #60A5FA; --color-opt: #34D399; --color-warm: #FBBF24; --color-hot: #F87171; }
           .card {
-              position: relative; display: flex; flex-direction: column; width: 100%; height: 350px;
+              position: relative; display: flex; flex-direction: column; width: 100%; height: 100%;
               overflow: hidden;
               text-shadow: rgba(0,0,0,0.4) 0 1px 0px;
               box-shadow: 0 4px 2px rgba(0,0,0,0.3);
