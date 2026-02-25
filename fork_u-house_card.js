@@ -1,34 +1,10 @@
 /**
- * Fork_U-House_Card v12.0 (AI Storyteller Edition)
- * * FEATURE: Long, descriptive, "AI-like" status messages with context & reasoning.
- * * FEATURE: Pollen support restored & integrated into advice logic.
- * * FEATURE: Wind Chill logic (Wind + Cold temp = specific advice).
- * * VISUALS: Prism Classic (Stars, Fog, No-Glow Rain) + Gaming Ambient Mode.
- */
-
-const TRANSLATIONS = {
-    en: {
-        loading: "Analyzing environmental data...",
-        home_median: "Home",
-        
-        // Conditions
-        clear_night: "Clear Night", cloudy: "Cloudy", fog: "Fog", hail: "Hail",
-        lightning: "Thunderstorm", lightning_rainy: "Thunderstorm & Rain",
-        partlycloudy: "Partly Cloudy", pouring: "Pouring Rain", rainy: "Rainy",
-        snowy: "Snowy", sunny: "Sunny", windy: "Windy",
-        
-        // --- AI NARRATIVES ---
-        
-        // 1. DANGER / STORM
-        alert_storm: "⚠️ CRITICAL ALERT: A storm with lightning is active nearby. Strong winds and heavy rain are expected. Please secure loose objects outside and stay indoors for safety.",
-        /**
- * Fork_U-House_Card v12.0 (AI Storyteller Edition) - FIXED VERSION V2
+ * Fork_U-House_Card v12.0 (AI Storyteller Edition) - FIXED VERSION
  * * FEATURE: Long, descriptive, "AI-like" status messages with context & reasoning.
  * * FEATURE: Pollen support restored & integrated into advice logic.
  * * FEATURE: Wind Chill logic (Wind + Cold temp = specific advice).
  * * VISUALS: Prism Classic (Stars, Fog, No-Glow Rain) + Gaming Ambient Mode.
  * * FIX: Added object-fit: contain to .bg-image to prevent stretching and cutting in panel view.
- * * MOD: Optimized for Hungarian language and fixed layout issues.
  */
 
 
@@ -72,6 +48,46 @@ const TRANSLATIONS = {
         advice_nice: "😎 COMFORTABLE CONDITIONS: Weather is stable at {val}°C with moderate wind. Great time for a walk or airing out the house.",
         
         advice_gaming: "🎮 GAMING MODE: Immersive lighting active. Notifications silenced.",
+    },
+    pl: {
+        loading: "Analizuję dane środowiskowe...",
+        home_median: "Dom",
+        
+        // Warunki
+        clear_night: "Bezchmurnie", cloudy: "Pochmurno", fog: "Mgła", hail: "Grad",
+        lightning: "Burza", lightning_rainy: "Burza z deszczem",
+        partlycloudy: "Częściowe zachm.", pouring: "Ulewa", rainy: "Deszcz",
+        snowy: "Śnieg", sunny: "Słonecznie", windy: "Wietrznie",
+        
+        // --- AI NARRACJA ---
+        
+        // 1. ZAGROŻENIE
+        alert_storm: "<span class='value-pill pill-1'>⚠️ <b>OSTRZEŻENIE KRYTYCZNE</b></span>  W pobliżu wykryto burzę. Spodziewaj się wyładowań i silnego wiatru. Zabezpiecz ogród i pozostań w domu.",
+        
+        // 2. ZDROWIE (SMOG / PYŁKI)
+        alert_aqi_bad: "<span class='value-pill pill-1'>😷 <b>ALARM SMOGOWY</b></span>  Jakość powietrza jest fatalna <span class='value-pill'>PM2.5: <b>{val}</b></span>. Wyjście na zewnątrz grozi problemami oddechowymi. Zamknij okna i włącz oczyszczacz.",
+        alert_aqi_mod: "<span class='value-pill pill-1'>😶 <b>OSTRZEŻENIE</b></span>  Podwyższone stężenie pyłów <span class='value-pill'>PM2.5: <b>{val}</b></span>. Jakość powietrza jest przeciętna. Osoby wrażliwe powinny unikać wysiłku na zewnątrz.",
+        alert_pollen: "<span class='value-pill pill-1'>🤧 <b>ALARM DLA ALERGIKÓW</b></span>  Wykryto bardzo wysokie stężenie pyłków. Przygotuj leki przeciwhistaminowe i unikaj wietrzenia sypialni.",
+        
+        // 3. PROGNOZA (NADCHODZĄCE)
+        advice_rain_soon: "<span class='value-pill pill-1'>☂️ <b>WEŹ PARASOL</b></span>  Nadciągają opady deszczu. Spodziewaj się ich ok. godziny <span class='value-pill'><b>{time}</b></span>. Prognozowane <span class='value-pill'><b>{val}</b> mm</span>",
+        advice_snow_soon: "<span class='value-pill pill-1'>❄️ <b>ZACHOWAJ OSTROŻNOŚĆ</b></span>  Ok. godziny <span class='value-pill'><b>{time}</b></span> zacznie padać śnieg. Warunki drogowe mogą się gwałtownie pogorszyć.",
+        
+        // 4. AKTUALNA POGODA
+        advice_rain_now: "<span class='value-pill pill-1'>🌧️ <b>DESZCZ</b></span>  Aktualny opad to <span class='value-pill'><b>{val}</b> mm</span>. Jest mokro i ślisko. Jeśli musisz wyjść, koniecznie weź kurtkę przeciwdeszczową.",
+        advice_snow_now: "<span class='value-pill pill-1'>🌨️ <b>ŚNIEG</b></span>  Na zewnątrz sypie śnieg. Jest <span class='value-pill'><b>malowniczo</b></span>, ale pamiętaj o ciepłym ubraniu i czapce.",
+        
+        // 5. UV
+        alert_uv_high: "<span class='value-pill pill-1'>☀️ <b>PROMIENIOWANIE</b></span>  Indeks UV wynosi <span class='value-pill'><b>{val}</b></span>. Skóra może ulec poparzeniu. Koniecznie użyj kremu z filtrem i okularów przeciwsłonecznych.",
+        
+        // 6. TEMPERATURA + WIATR
+        advice_cold_wind: "<span class='value-pill pill-1'>🥶 <b>WIATR</b></span>  Jest <span class='value-pill'><b>{val}</b> °C</span>, ale silny wiatr sprawia, hogy a hőmérséklet odczuwalna jest znacznie niższa. Ubierz się „na cebulkę” i chroń uszy.",
+        advice_cold: "<span class='value-pill pill-1'>🧣 <b>ZIMNO</b></span>  Temperatura wynosi <span class='value-pill'><b>{val}</b> °C</span>. Ubierz ciepłą kurtkę przed wyjściem. Warto sprawdzić szczelność okien.",
+        
+        advice_hot: "<span class='value-pill pill-1'>🔥 <b>GORĄC</b></span>  Temperatura osiągnęła <span class='value-pill'><b>{val}</b> °C</span>. Unikaj słońca w godzinach szczytu, pij dużo wody i zasłoń rolety.",
+        advice_nice: "😎 Pogoda jest stabilna, temperatura przyjemna <span class='value-pill'><b>{val}</b> °C</span>. To <span class='value-pill'>idealny</span> moment na spacer lub przewietrzenie mieszkania.",
+        
+        advice_gaming: "<span class='value-pill pill-1'>🎮 <b>TRYB IMERSYJNY</b></span>  Tryb kina lub gry aktywny. Sterowanie <span class='value-pill'><b>AmbiLight</b></span> włączone.",
     },
     hu: {
         loading: "Környezeti adatok elemzése...",
@@ -135,6 +151,7 @@ class ForkUHouseCard extends HTMLElement {
         if (!wObj) return;
 
         const condition = wObj.state;
+        const temp = wObj.attributes.temperature;
         const isNight = this._hass.states['sun.sun']?.state === 'below_horizon';
         const isGaming = this._config.party_mode_entity && this._hass.states[this._config.party_mode_entity]?.state === 'on';
 
@@ -205,15 +222,18 @@ class ForkUHouseCard extends HTMLElement {
         const aqiVal = this._getStateVal(this._config.aqi_entity);
         const {speed: windSpeed} = this._getWindData();
         
-        const isHighPollen = false; 
+        // Pollen logic (example: sensor.pollen_level > 2)
+        const isHighPollen = false; // Placeholder for future expansion
 
         let msg = "";
         let level = "normal";
 
+        // 1. DANGER: STORM
         if (condition === 'lightning' || condition === 'lightning-rainy') {
             msg = this._t('alert_storm');
             level = "danger";
         }
+        // 2. ZDROWIE: AQI
         else if (aqiVal !== null) {
              if (aqiVal > 100) {
                  msg = this._t('alert_aqi_bad', {val: aqiVal});
@@ -223,10 +243,12 @@ class ForkUHouseCard extends HTMLElement {
                  level = "warn";
              }
         }
+        // 3. ZDROWIE: POLLEN
         else if (isHighPollen) {
             msg = this._t('alert_pollen');
             level = "warn";
         }
+        // 4. PLANOWANIE: NADCHODZĄCY DESZCZ/ŚNIEG
         else {
             const nextRain = forecast.slice(0, 3).find(f => ['rainy', 'pouring', 'snowy'].includes(f.condition) || (f.precipitation > 0));
             
@@ -238,6 +260,7 @@ class ForkUHouseCard extends HTMLElement {
                     : this._t('advice_rain_soon', {time, val: p});
                 level = "warn";
             }
+            // 5. BIEŻĄCE WARUNKI
             else if (['rainy', 'pouring'].includes(condition)) {
                 msg = this._t('advice_rain_now', {val: wObj.attributes.precipitation || "~"}); 
                 level = "warn";
@@ -246,10 +269,12 @@ class ForkUHouseCard extends HTMLElement {
                 msg = this._t('advice_snow_now'); 
                 level = "warn";
             }
+            // 6. UV (LATO)
             else if (uvVal !== null && uvVal > 6) {
                 msg = this._t('alert_uv_high', {val: uvVal}); 
                 level = "warn";
             }
+            // 7. TEMPERATURA + WIATR (ZIMA)
             else if (temp < 10 && windSpeed > 20) {
                 msg = this._t('advice_cold_wind', {val: temp});
             }
@@ -259,6 +284,7 @@ class ForkUHouseCard extends HTMLElement {
                 msg = this._t('advice_hot', {val: temp}); 
                 level = "warn";
             } 
+            // 8. STABILNIE
             else {
                 msg = this._t('advice_nice', {val: temp});
             }
@@ -296,6 +322,7 @@ class ForkUHouseCard extends HTMLElement {
         return { speed: isNaN(speed)?5:speed, bearing: isNaN(bearing)?270:bearing };
     }
 
+    // --- RENDER ---
     _render() {
       this.attachShadow({mode: 'open'});
       this.shadowRoot.innerHTML = `
